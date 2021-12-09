@@ -5,7 +5,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ChatMessageListener {
-    public static ChatMessageRepository repo = new ChatMessageRepository();
+
+    public final ChatMessageRepository repo;
+
+    public ChatMessageListener(ChatMessageRepository chatMessageRepository) {
+        repo = chatMessageRepository;
+    }
 
     public void onMessage(String message) {
         repo.addChatMessage(message);
